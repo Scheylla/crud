@@ -25,7 +25,7 @@ if (!$query)
     $nome = $item->item_descricao;
     $descricao = $item->descricao_comp;
     $reserva = $item->reserva;
-    $descto =  $item->descto;
+    $desconto =  $item->descto;
         
 ?>
 
@@ -72,7 +72,7 @@ if (!$query)
         <div class = "form-group">
             <label class = "col-md-4 control-label" for = "promocao">Promoção</label>
             <div class = "col-md-4">
-                <input id = "promocao" name = "descto" type = "text" value="<?php echo $descto ?>" class = "form-control input-md" required = "">
+                <input id = "promocao" name = "descto" type = "text" value="<?php echo $desconto ?>" class = "form-control input-md" required = "">
 
             </div>
         </div>
@@ -87,3 +87,13 @@ if (!$query)
 
     </form>
 </html>
+
+<?php
+$_SESSION['id'] = $id;
+$_SESSION['nome'] = $nome;
+$_SESSION['descricao'] = $descricao;
+$_SESSION['reserva'] = $reserva;
+$_SESSION['desconto'] = $desconto;
+
+
+?>

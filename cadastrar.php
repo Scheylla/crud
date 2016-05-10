@@ -20,7 +20,7 @@ class cadastrar
 
         if (!isset($_POST["item_descricao"]) OR empty($_POST["item_descricao"])) 
         {
-            $_SESSION["erro"] = "O campo está vazio";
+            $_SESSION["erro"] = "O campo Nome está vazio";
             $this->redirect();
         }
 
@@ -28,7 +28,7 @@ class cadastrar
 
         if (!isset($_POST["descricao_comp"])OR empty($_POST["descricao_comp"]))
         {
-            $_SESSION["erro"] = "O campo está vazio";
+            $_SESSION["erro"] = "O campo Descrição está vazio";
             $this->redirect();
         }
 
@@ -36,7 +36,7 @@ class cadastrar
 
         if (!isset($_POST["reserva"])OR empty($_POST["reserva"]))
         {
-            $_SESSION["erro"] = "O campo está vazio";
+            $_SESSION["erro"] = "O campo Valor está vazio";
             $this->redirect();
         }
 
@@ -44,7 +44,7 @@ class cadastrar
 
         if (!isset($_POST["descto"])OR empty($_POST["descto"]))
         {
-            $_SESSION["erro"] = "O campo está vazio";
+            $_SESSION["erro"] = "O campo Promoção está vazio";
             $this->redirect();
         }
 

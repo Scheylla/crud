@@ -5,15 +5,12 @@ include 'header.php';
 //require 'classes/Validacao.php';
 //require 'classes/CadastroItens.php';
 
-if (!isset($_SESSION["erro"]))
+if (isset($_SESSION["erro"]))
 {
-   
-
-    var_dump($_SESSION);
-    exit();
+   echo $_SESSION["erro"];
+   unset($_SESSION["erro"]);
 }
-
-
+//value e sessao
 ?>
 
 <html>
