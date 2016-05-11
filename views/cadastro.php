@@ -9,46 +9,21 @@ if (isset($_SESSION["erro"]))
 {
    echo $_SESSION["erro"];
    unset($_SESSION["erro"]);
+}    
+
+function old($campo)
+{
+    if(isset($_SESSION[$campo]))
+    {
+        return $_SESSION[$campo];
+        
+    }
+    return "";
 }
-//value e sessao
+
 ?>
 
 <html>
-    <!-- <script language="JavaScript" >
-            function enviardados() {
-
-                if (document.dados.nome.value == "" || document.dados.nome.value.length < 3)
-                {
-                    alert("Preencha o campo NOME corretamente!");
-                    document.dados.tx_nome.focus();
-                    return false;
-                }
-
-                if (document.dados.descricao.value == "" || document.dados.descricao.value.length < 50)
-                {
-                    alert("Preencha o campo DESCRIÇÃO corretamente!");
-                    document.dados.tx_nome.focus();
-                    return false;
-                }
-
-                if (document.dados.valor.value == "" || document.dados.valor.value.length isNaN)
-                {
-                    alert("Preencha o campo VALOR corretamente!");
-                    document.dados.tx_nome.focus();
-                    return false;
-                }
-
-                if (document.dados.promocao.value == "" || document.dados.promocao.value.length isNaN)
-                {
-                    alert("Preencha o campo PROMOÇÃO corretamente!");
-                    document.dados.tx_nome.focus();
-                    return false;
-                }
-
-                return true;
-            }
-
-        </script> -->
 
     <form class = "form-horizontal" method="post" action="../cadastrar.php" novalidate="">
 
@@ -57,7 +32,7 @@ if (isset($_SESSION["erro"]))
         
         <div class = "form-group">
             <div class = "col-md-4">
-                <input id = "id" name = "id" type="hidden"  placeholder = "" class = "form-control input-md" >
+                <input id = "id" name = "id" type="hidden"  placeholder = "" class = "form-control input-md" value="" >
 
             </div>
         </div>
@@ -66,7 +41,7 @@ if (isset($_SESSION["erro"]))
         <div class = "form-group">
             <label class = "col-md-4 control-label" for = "nome">Nome</label>
             <div class = "col-md-4">
-                <input id = "nome" name = "item_descricao" type = "text" placeholder = "" class = "form-control input-md" required = "">
+                <input id = "nome" name = "item_descricao" type = "text" novalidate="" class = "form-control input-md" value="<?php echo old("nome"); ?>">
 
             </div>
         </div>
@@ -75,7 +50,7 @@ if (isset($_SESSION["erro"]))
         <div class = "form-group">
             <label class = "col-md-4 control-label" for = "descricao">Descrição</label>
             <div class = "col-md-4">
-                <textarea class = "form-control" id = "descricao" name = "descricao_comp" required = ""></textarea>
+                <textarea class = "form-control" id = "descricao" name = "descricao_comp" novalidate="" value=""><?php echo old("descricao"); ?></textarea>
             </div>
         </div>
 
@@ -83,7 +58,7 @@ if (isset($_SESSION["erro"]))
         <div class = "form-group">
             <label class = "col-md-4 control-label" for = "valor">Valor</label>
             <div class = "col-md-4">
-                <input id = "valor" name = "reserva" type = "text" placeholder = "" class = "form-control input-md" required = "">
+                <input id = "valor" name = "reserva" type = "text" novalidate="" class = "form-control input-md" value="<?php echo old("valor"); ?>">
             </div>
         </div>
 
@@ -91,8 +66,7 @@ if (isset($_SESSION["erro"]))
         <div class = "form-group">
             <label class = "col-md-4 control-label" for = "promocao">Promoção</label>
             <div class = "col-md-4">
-                <input id = "promocao" name = "descto" type = "text" placeholder = "" class = "form-control input-md" required = "">
-
+                <input id = "promocao" name = "descto" type = "text" novalidate="" class = "form-control input-md" value="<?php echo old("promocao"); ?>">
             </div>
         </div>
 
@@ -108,6 +82,12 @@ if (isset($_SESSION["erro"]))
 </html>
 
 <?php
+    
+    unset($_SESSION['nome']);
+    unset($_SESSION['descricao']);
+    unset($_SESSION['valor']);
+    unset($_SESSION['promocao']);
+    
 /* $valida = new Validacao();
 
 echo $valida->validarCampo("Nome", $nome, "25", "2");

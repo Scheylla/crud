@@ -10,11 +10,19 @@ class excluir
     {
         global $DB; 
         
-        $query = pg_query($DB, "DELETE * item WHERE id=$id");
+        $id = $_GET['id'];
         
+        $query = pg_query($DB, "DELETE from item WHERE id= $id");
         
+        if (!$query)
+        {
+            echo "A query não foi executada ";
+        }
+        else
+        {
+            echo "<h1>Dados excluidos com sucesso!</h1>";
+        }
     }
-
 }
     
 $service = new excluir();

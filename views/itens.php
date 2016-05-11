@@ -15,7 +15,7 @@
                 <td><?php echo $item->item_descricao ?></td>
                 <td>
                     <button class="btn"><a href="views/alteracao.php?id=<?php echo $item->id ?>"><span class="glyphicon glyphicon-pencil"></span></a></button>
-                    <button class="btn"><a href="views/exclusao.php?id=<?php echo $item->id ?>"><span class="glyphicon glyphicon-trash"></span></a></button>
+                    <button class="btn"><a href="excluir.php?id=<?php echo $item->id ?>"><span class="glyphicon glyphicon-trash"></span></a></button>
                 </td>
             </tr>
         <?php endforeach; ?>

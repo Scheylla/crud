@@ -17,6 +17,11 @@ class cadastrar
     {
         global $DB;
         
+        $_SESSION['nome'] = $_POST["item_descricao"];
+        $_SESSION['descricao'] = $_POST["descricao_comp"];
+        $_SESSION['valor'] = $_POST["reserva"];
+        $_SESSION['promocao'] = $_POST["descto"];
+        
 
         if (!isset($_POST["item_descricao"]) OR empty($_POST["item_descricao"])) 
         {
@@ -54,7 +59,7 @@ class cadastrar
         $maxId = pg_fetch_row($query)[0];
         $maxId = $maxId + 1;
 
-        $query = pg_query($DB, "INSERT INTO item ( id, item_descricao, descricao_comp, reserva, descto)  VALUES ($maxId, '$nome', '$descricao', '$valor', '$promocao')  ORDER BY id ASC");
+        $query = pg_query($DB, "INSERT INTO item ( id, item_descricao, descricao_comp, reserva, descto)  VALUES ($maxId, '$nome', '$descricao', '$valor', '$promocao')");
 
         if (!$query)
         {
@@ -68,6 +73,13 @@ class cadastrar
                     </body>
                   </html>";
         }
+        
+        unset($_SESSION['nome']);
+        unset($_SESSION['descricao']);
+        unset($_SESSION['valor']);
+        unset($_SESSION['promocao']);
+        
+        
     }
 }
 
