@@ -24,8 +24,11 @@ class excluir
         }
     }
 }
-    
+ 
 $service = new excluir();
 $item = $service->excluirItens();
+
+
+//$id = $_GET['id'];
 
 ?>

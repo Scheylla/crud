@@ -1,4 +1,3 @@
- <?php include 'views/header.php'; ?>
 
 <table class='table' border='2px' cellspacing='0' cellpadding='0'>
     <thead>
@@ -10,12 +9,12 @@
     </thead>
     <tbody>
         <?php foreach ($itens as $item) : ?>
-            <tr>
+            <tr data-id="<?php echo $item->id; ?>">
                 <td><a href="item.php?id=<?php echo $item->id ?>"><?php echo $item->id ?></a></td>
                 <td><?php echo $item->item_descricao ?></td>
                 <td>
                     <button class="btn"><a href="views/alteracao.php?id=<?php echo $item->id ?>"><span class="glyphicon glyphicon-pencil"></span></a></button>
-                    <button class="btn"><a href="excluir.php?id=<?php echo $item->id ?>"><span class="glyphicon glyphicon-trash"></span></a></button>
+                    <button class="btn delete" data-id="<?php echo $item->id; ?>" class="btn"><span class="glyphicon glyphicon-trash"></span></button>
                 </td>
             </tr>
         <?php endforeach; ?>
