@@ -1,1 +1,11 @@
-<h1>Pagina incicial!</h1>
+<?php
+require 'config.php';
+require 'classes/ItemService.php';
+include 'views/header.php';
+
+$service = new ItemService();
+
+$itens = $service->getItens();
+
+include 'views/itens.php'; ?>
+</h1>
