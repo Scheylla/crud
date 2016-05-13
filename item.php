@@ -1,21 +1,21 @@
-<?php include 'views/header.php'; ?>
-
 <?php
 
-require 'config.php';
-require 'classes/ItemService.php';
+    include 'views/header.php';
 
-if (!isset($_GET["id"])){
-     header("location:index.php");
-     exit();
-}
+    require 'config.php';
+    require 'classes/ItemService.php';
 
-$id = $_GET["id"];
+    if (!isset ($_GET["id"]))
+    {
+        header ("location:index.php");
+        exit ();
+    }
 
-$service = new ItemService();
-$item = $service->showItem($id);
+    $id = $_GET["id"];
 
+    $service = new ItemService();
+    $item = $service->showItem ($id);
+
+    include 'views/detalhes.php';
+    include 'views/footer.php';
 ?>
-<?php include 'views/detalhes.php'; ?>
-
-<?php include 'views/footer.php'; ?>

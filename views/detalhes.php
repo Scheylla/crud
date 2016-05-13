@@ -10,16 +10,14 @@
         </thead>
         <tbody>
             <?php foreach ($item as $key => $value): ?>
-
-                <tr>
-                    <td><?php echo "$key" ?></td>
-                    <td><?php echo "$value" ?></td>
-                </tr>
-            <?php endforeach; ?>
-
+                    <tr>
+                        <td><?php echo "$key" ?></td>
+                        <td><?php echo "$value" ?></td>
+                    </tr>
+                <?php endforeach; ?>
         </tbody>
     </table>
-    
+
     <button class="btn"><a href="index.php">Voltar</a></button>
 </div>
 

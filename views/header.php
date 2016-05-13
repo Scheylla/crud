@@ -10,8 +10,7 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="/Banco/css/bootstrap-theme.min.css">
-
-
+        
     </head>
 
     <body>

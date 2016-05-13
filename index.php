@@ -1,11 +1,25 @@
 <?php
-require 'config.php';
-require 'classes/ItemService.php';
-include 'views/header.php';
 
-$service = new ItemService();
+    require 'config.php';
+    require 'classes/ItemService.php';
+    include 'views/header.php';
 
-$itens = $service->getItens();
+    $service = new ItemService();
+    $itens = $service->getItens ();
 
-include 'views/itens.php'; ?>
-</h1>
+    if (isset ($_SESSION['login']))
+    {
+       include 'views/itens.php';
+    }
+    else
+    {
+      echo"
+            <script>
+                alert('Senha Incorreta');
+                window.location='login.php'
+            </script>";
+    } 
+    
+    session_destroy();
+    
+?>
