@@ -44,7 +44,7 @@
 
 <html>
 
-    <form class = "form-horizontal" method="post" action="../alterar.php">
+    <form id="form" class = "form-horizontal" method="post" >
 
         <!--Form Name -->
         <legend>Formulario</legend>
@@ -105,4 +105,6 @@
     unset ($_SESSION['descricao']);
     unset ($_SESSION['valor']);
     unset ($_SESSION['promocao']);
+    
+    include 'footer.php'; 
 ?>

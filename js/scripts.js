@@ -1,3 +1,5 @@
+//excluir
+
 $(function () {
 
     $(".delete").click(function () {
@@ -16,7 +18,9 @@ $(function () {
     });
 });
 
-$(function ($) {
+//cadastrar
+
+$(function () {
     $("#formulario").submit(function (event) {
         event.preventDefault();
         var nome = $("#nome").val();
@@ -27,13 +31,42 @@ $(function ($) {
         $.post('/Banco/cadastrar.php',
                 {nome: nome, descricao: descricao, valor: valor, promocao: promocao},
                 function (data) {
-                    console.log("data ="+data )
+                    
+                    //console.log(data);
+                    
                     if (data.success == true) {
-                        alert('success');
+                        alert('Cadastro realizado com sucesso!');
                     } else {
-                        alert('cadastro não realizado');
+                        alert('Cadastro não realizado!');
+                    }
+                }
+        );
+    });
+
+
+//alterar
+
+    $("#form").submit(function (event) {
+        event.preventDefault();
+        var id = $("#id").val();
+        var nome = $("#nome").val();
+        var descricao = $("#descricao").val();
+        var valor = $("#valor").val();
+        var promocao = $("#promocao").val();
+
+        $.post("/Banco/alterar.php?id=" + id,
+                {nome: nome, descricao: descricao, valor: valor, promocao: promocao},
+                function (data) {
+                    
+                    //console.log(data);
+                    
+                    if (data.success == true) {
+                        alert('Alteração realizada com sucesso!');
+                    } else {
+                        alert('Alteração não realizada!');
                     }
                 }
         );
     });
 });
+

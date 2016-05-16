@@ -1,6 +1,5 @@
 <?php
-    include 'views/header.php';
-    include 'views/body.php';
+    header('Content-Type: application/json');
     require 'config.php';
 
     function redirect($url)
@@ -21,54 +20,56 @@
         {
             global $DB;
 
-            $_SESSION['nome'] = $_POST["item_descricao"];
-            $_SESSION['descricao'] = $_POST["descricao_comp"];
-            $_SESSION['valor'] = $_POST["reserva"];
-            $_SESSION['promocao'] = $_POST["descto"];
+            $_SESSION['nome'] = $_POST["nome"];
+            $_SESSION['descricao'] = $_POST["descricao"];
+            $_SESSION['valor'] = $_POST["valor"];
+            $_SESSION['promocao'] = $_POST["promocao"];
 
-            $id = $_POST['id'];
+            $id = $_GET['id'];
 
-            if (!isset ($_POST["item_descricao"]) OR empty ($_POST["item_descricao"]))
+            if (!isset ($_POST["nome"]) OR empty ($_POST["nome"]))
             {
                 $_SESSION["erro"] = "O campo Nome está vazio";
                 redirect ($this->getRedirectIUrl ($id));
             }
 
-            $nome = $_POST["item_descricao"];
+            $nome = $_POST["nome"];
 
-            if (!isset ($_POST["descricao_comp"]) OR empty ($_POST["descricao_comp"]))
+            if (!isset ($_POST["descricao"]) OR empty ($_POST["descricao"]))
             {
                 $_SESSION["erro"] = "O campo Descrição está vazio";
                 redirect ($this->getRedirectIUrl ($id));
             }
 
-            $descricao = $_POST["descricao_comp"];
+            $descricao = $_POST["descricao"];
 
-            if (!isset ($_POST["reserva"]) OR empty ($_POST["reserva"]))
+            if (!isset ($_POST["valor"]) OR empty ($_POST["valor"]))
             {
                 $_SESSION["erro"] = "O campo Valor está vazio";
                 redirect ($this->getRedirectIUrl ($id));
             }
 
-            $valor = $_POST["reserva"];
+            $valor = $_POST["valor"];
 
-            if (!isset ($_POST["descto"]) OR empty ($_POST["descto"]))
+            if (!isset ($_POST["promocao"]) OR empty ($_POST["promocao"]))
             {
                 $_SESSION["erro"] = "O campo Promoção está vazio";
                 redirect ($this->getRedirectIUrl ($id));
             }
 
-            $promocao = $_POST["descto"];
+            $promocao = $_POST["promocao"];
 
             $query = pg_query ($DB, "UPDATE item SET item_descricao='$nome', descricao_comp ='$descricao', reserva ='$valor', descto ='$promocao' WHERE id = $id");
 
             if (!$query)
             {
-                echo "A query não foi executada ";
+                echo json_encode (array("success" => false));
             }
             else
             {
-                echo "<h1>Dados alterados com sucesso!</h1>";
+                echo json_encode (array("success" => true));
+
+                //(['success'=> true]);
             }
 
             unset ($_SESSION['nome']);
@@ -81,13 +82,3 @@
     $service = new alterar();
     $item = $service->alterarItens ();
 ?>
-
-<html>
-    <body>
-        <div class="col-md-4 col-sm-offset-3">
-            <br><br>
-
-            <button class="btn"><a href="index.php">Voltar</a></button>
-        </div>
-    </body>
-</html>

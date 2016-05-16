@@ -82,6 +82,5 @@
     unset ($_SESSION['valor']);
     unset ($_SESSION['promocao']);
 
-
     include 'footer.php'; 
 ?>

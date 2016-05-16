@@ -23,6 +23,7 @@
 
 
 <button class="btn"><a href="views/cadastro.php">Cadastrar Itens</a></button>
+<button class="btn"><a href="logout.php">Sair</a></button>
 
 
 

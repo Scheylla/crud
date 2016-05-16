@@ -1,9 +1,11 @@
 <?php
 
     require 'config.php';
+    require 'sessao.php';
     require 'classes/ItemService.php';
     include 'views/header.php';
-
+    include 'filtro.php';
+    
     $service = new ItemService();
     $itens = $service->getItens ();
 
@@ -20,6 +22,5 @@
             </script>";
     } 
     
-    session_destroy();
-    
+      
 ?>

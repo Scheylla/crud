@@ -1,5 +1,8 @@
 <?php
+
+header('Content-Type: application/json');
 require 'config.php';
+require 'sessao.php';
 
 class cadastrar
 {
@@ -50,9 +53,6 @@ class cadastrar
             $_SESSION["erro"] = "O campo Promoção está vazio";
             $this->redirect();
         }
-        
-        //var_dump($_POST["promocao"]);
-        //exit('teste');
 
         $promocao = $_POST["promocao"];
 
@@ -64,13 +64,16 @@ class cadastrar
 
         if (!$query)
         {
-            echo json_encode(['success'=> false]);
+            echo json_encode (array("success" => false));
         }
         else
         {
-            echo json_encode(['success'=> true]);
+            echo json_encode (array("success" => true));
+            
+            //(['success'=> true]);
         }
         
+               
         unset($_SESSION['nome']);
         unset($_SESSION['descricao']);
         unset($_SESSION['valor']);
@@ -81,4 +84,4 @@ class cadastrar
 $service = new cadastrar();
 $item = $service->cadastrarItens();
 
-
+?>
